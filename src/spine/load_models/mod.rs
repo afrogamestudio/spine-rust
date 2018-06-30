@@ -14,6 +14,7 @@ pub mod skeleton_load_model;
 pub mod skeleton_meta_load_model;
 pub mod slot_animation_load_model;
 pub mod slot_load_model;
+pub mod transform_constraint_load_model;
 pub mod transform_mode;
 pub mod translation_delta_load_model;
 pub mod blend_mode;
@@ -38,6 +39,7 @@ pub use self::skeleton_load_model::SkeletonLoadModel;
 pub use self::skeleton_meta_load_model::SkeletonMetaLoadModel;
 pub use self::slot_animation_load_model::SlotAnimationLoadModel;
 pub use self::slot_load_model::SlotLoadModel;
+pub use self::transform_constraint_load_model::TransformConstraintLoadModel;
 pub use self::transform_mode::TransformMode;
 pub use self::translation_delta_load_model::TranslationDeltaLoadModel;
 
