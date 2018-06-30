@@ -44,20 +44,7 @@ pub struct SlotData {
 	b2: f64,
 	has_second_colour: bool,
 	attachment_name: String,
-	blend_mode: BlendMode,
-	
-	// pub SlotData (int index, String name, BoneData boneData) {
-	// 	if (index < 0) throw new ArgumentException ("index must be >= 0.", "index");
-	// 	if (name == null) throw new ArgumentNullException("name", "name cannot be null.");
-	// 	if (boneData == null) throw new ArgumentNullException("boneData", "boneData cannot be null.");
-	// 	this.index = index;
-	// 	this.name = name;
-	// 	this.boneData = boneData;
-	// }
-
-	// override pub string ToString () {
-	// 	return name;
-	// }
+	blend_mode: BlendMode
 }
 
 impl SlotData
