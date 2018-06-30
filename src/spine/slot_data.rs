@@ -28,6 +28,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
+ use spine::blend_mode::BlendMode;
+ use spine::bone_data::BoneData;
+
 pub struct SlotData {
 	index: i32,
 	name: String,
@@ -63,7 +66,7 @@ impl SlotData
 		index: i32,
 		name: String,
 		bone_data: BoneData,
-		has_second_color: bool,
+		has_second_colour: bool,
 		attachment_name: String,
 		blend_mode: BlendMode) -> SlotData
 	{
@@ -71,14 +74,14 @@ impl SlotData
 			index,
 			name,
 			bone_data,
-			r: 1,
-			g: 1,
-			b: 1,
-			a: 1,
-			r2: 0,
-			g2: 0,
-			b2: 0,
-			has_second_color,
+			r: 1.0,
+			g: 1.0,
+			b: 1.0,
+			a: 1.0,
+			r2: 0.0,
+			g2: 0.0,
+			b2: 0.0,
+			has_second_colour,
 			attachment_name,
 			blend_mode
 		}
