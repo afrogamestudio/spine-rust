@@ -4,14 +4,7 @@ extern crate serde;
 #[macro_use]
 extern crate serde_derive;
 
-pub mod spine
-{
-    pub mod bone_data;
-    pub mod blend_mode;
-    pub mod slot_data;
-    pub mod load_models;
-    pub mod atlas;
-}
+pub mod spine;
 
 #[cfg(test)]
 mod tests {
