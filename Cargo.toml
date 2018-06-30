@@ -1,0 +1,6 @@
+[package]
+name = "spine-rust"
+version = "0.1.0"
+authors = ["Pontjho Mokhonoana <pontjho@entelect.co.za>"]
+
+[dependencies]
