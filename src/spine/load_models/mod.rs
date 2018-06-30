@@ -7,7 +7,6 @@ pub mod colour_delta_load_model;
 pub mod deformation_delta_load_model;
 pub mod event_load_model;
 pub mod rotation_delta_load_model;
-pub mod rotation_load_model;
 pub mod scale_delta_load_model;
 pub mod skeleton_load_model;
 pub mod skeleton_meta_load_model;

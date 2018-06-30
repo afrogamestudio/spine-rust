@@ -8,6 +8,7 @@ use super::bone_load_model::BoneLoadModel;
 use super::default_events;
 
 #[derive(Serialize, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
 pub struct SkeletonLoadModel
 {
     pub skeleton: SkeletonMetaLoadModel,

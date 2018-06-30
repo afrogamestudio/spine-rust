@@ -1,6 +1,7 @@
 use super::default_scale;
 
 #[derive(Serialize, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
 pub struct BoneLoadModel
 {
     pub name: String,
@@ -11,7 +12,7 @@ pub struct BoneLoadModel
     pub y: Option<f64>,
     pub transform: Option<String>,
     #[serde(default = "default_scale")]
-    pub scaleX: f64,
+    pub scale_x: f64,
     #[serde(default = "default_scale")]
-    pub scaleY: f64
+    pub scale_y: f64
 }
