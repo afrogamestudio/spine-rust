@@ -13,9 +13,9 @@ pub struct CurveTimeline
 
 pub struct AttachmentTimeline
 {
-    slot_index: usize,
-    frames: Vec<f64>,
-    attachment_names: Vec<String>
+    pub slot_index: usize,
+    pub frames: Vec<f64>,
+    pub attachment_names: Vec<String>
 }
 
 pub struct EventTimeline

@@ -6,6 +6,6 @@ pub struct AttachmentLoadModel
 {
     #[serde(rename = "type")]
     pub attachment_type: Option<String>,
-    pub vertexCount: Option<usize>,
+    pub vertex_count: Option<usize>,
     pub vertices: Option<Vec<f64>>
 }

@@ -28,7 +28,6 @@
 * POSSIBILITY OF SUCH DAMAGE.
 *****************************************************************************/
 
-use std::collections::HashMap;
 use super::super::load_models::SkeletonLoadModel;
 
 /// <summary>Stores mix (crossfade) durations to be applied when AnimationState animations are changed.</summary>
