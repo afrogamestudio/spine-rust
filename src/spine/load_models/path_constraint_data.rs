@@ -33,7 +33,7 @@
 
 #[derive(Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
-pub struct PathConstraintData {
+pub struct PathConstraintLoadModel {
 	pub name: String,
 	pub order: i32,
 	pub bones: Vec<BoneLoadModel>,

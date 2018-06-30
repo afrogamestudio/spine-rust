@@ -29,7 +29,7 @@ pub use self::colour_delta_load_model::ColorDeltaLoadModel;
 pub use self::deformation_delta_load_model::DeformationDeltaLoadModel;
 pub use self::event_load_model::EventLoadModel;
 pub use self::ik_constraint_load_model::IkConstraintLoadModel;
-pub use self::path_constraint_data::PathConstraintData;
+pub use self::path_constraint_data::PathConstraintLoadModel;
 pub use self::path_constraint_data::PositionMode;
 pub use self::path_constraint_data::SpacingMode;
 pub use self::path_constraint_data::RotateMode;
