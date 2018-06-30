@@ -11,18 +11,6 @@ pub struct Atlas// : IEnumerable<AtlasRegion> {
 
 impl Atlas
 {
-    //     #region IEnumerable implementation
-    // pub IEnumerator<AtlasRegion> GetEnumerator () {
-    //     return regions.GetEnumerator();
-    // }
-
-    // System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator () {
-    //     return regions.GetEnumerator();
-    // }
-    // #endregion
-
-    // #if !(IS_UNITY)
-    // #if WINDOWS_STOREAPP
     // private async Task ReadFile(string path, TextureLoader textureLoader) {
     //     var folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
     //     var file = await folder.GetFileAsync(path).AsTask().ConfigureAwait(false);
