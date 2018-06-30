@@ -31,7 +31,7 @@
 pub struct BoneData {
 	index: i32,
 	name: String,
-	parent: BoneData,
+	// parent: &reBoneData,
 	length: f64,
 	x: f64,
 	y: f64,
@@ -52,7 +52,7 @@ pub struct BoneData {
 
 }
 
-[Flags]
+// [Flags]
 pub enum TransformMode
 {
 	//0000 0 Flip Scale Rotation
