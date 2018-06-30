@@ -1,4 +1,5 @@
 use super::default_scale;
+use super::TransformMode;
 
 #[derive(Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]

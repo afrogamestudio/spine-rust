@@ -28,52 +28,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-using System;
-
-namespace Spine {
-	pub struct PathConstraintData {
-		 string name;
-		 int order;
-		 ExposedList<BoneData> bones = new ExposedList<BoneData>();
-		 SlotData target;
-		 PositionMode positionMode;
-		 SpacingMode spacingMode;
-		 RotateMode rotateMode;
-		 f64 offsetRotation;
-		 f64 position, spacing, rotateMix, translateMix;
-
-		pub string Name { get { return name; } }
-		pub int Order { get { return order; } set { order = value; } }
-		pub ExposedList<BoneData> Bones { get { return bones; } }
-		pub SlotData Target { get { return target; } set { target = value; } }			
-		pub PositionMode PositionMode { get { return positionMode; } set { positionMode = value; } }
-		pub SpacingMode SpacingMode { get { return spacingMode; } set { spacingMode = value; } }
-		pub RotateMode RotateMode { get { return rotateMode; } set { rotateMode = value; } }
-		pub f64 OffsetRotation { get { return offsetRotation; } set { offsetRotation = value; } }
-		pub f64 Position { get { return position; } set { position = value; } }
-		pub f64 Spacing { get { return spacing; } set { spacing = value; } }
-		pub f64 RotateMix { get { return rotateMix; } set { rotateMix = value; } }
-		pub f64 TranslateMix { get { return translateMix; } set { translateMix = value; } }
-
-		pub PathConstraintData (String name) {
-			if (name == null) throw new ArgumentNullException("name", "name cannot be null.");
-			this.name = name;
-		}
-
-		pub override string ToString () {
-			return name;
-		}
-	}
-	
-	pub enum PositionMode {
-		Fixed, Percent        
-	}
-
-	pub enum SpacingMode {
-		Length, Fixed, Percent
-	}
-
-	pub enum RotateMode {
-		Tangent, Chain, ChainScale
-	}
+#[derive(Serialize, Deserialize, Clone)]
+pub enum BlendMode {
+	Normal, Additive, Multiply, Screen
 }

@@ -28,13 +28,15 @@
 * POSSIBILITY OF SUCH DAMAGE.
 *****************************************************************************/
 
+use super::BoneLoadModel;
+
 #[derive(Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct IkConstraintLoadModel {
 	pub name: String,
 	pub order: i32,
-	pub bones: Vec<BoneData>,
-	pub target: BoneData,
+	pub bones: Vec<BoneLoadModel>,
+	pub target: BoneLoadModel,
 	pub bend_direction: i32,
 	pub mix: f64
 }

@@ -28,6 +28,37 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-pub enum BlendMode {
-	Normal, Additive, Multiply, Screen
+ use super::BoneLoadModel;
+ use super::SlotLoadModel;
+
+#[derive(Serialize, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct PathConstraintData {
+	pub name: String,
+	pub order: i32,
+	pub bones: Vec<BoneLoadModel>,
+	pub target: SlotLoadModel,
+	pub position_mode: PositionMode,
+	pub spacing_mode: SpacingMode,
+	pub rotate_mode: RotateMode,
+	pub offset_rotation: f64,
+	pub position: f64,
+	pub spacing: f64,
+	pub rotate_mix: f64,
+	pub translate_mix: f64
+}
+
+#[derive(Serialize, Deserialize, Clone)]
+pub enum PositionMode {
+	Fixed, Percent        
+}
+
+#[derive(Serialize, Deserialize, Clone)]
+pub enum SpacingMode {
+	Length, Fixed, Percent
+}
+
+#[derive(Serialize, Deserialize, Clone)]
+pub enum RotateMode {
+	Tangent, Chain, ChainScale
 }

@@ -1,3 +1,5 @@
+use super::Timeline;
+
 pub struct Animation {
     pub name: String,
     pub duration: f64,

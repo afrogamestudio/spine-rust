@@ -29,11 +29,12 @@
 *****************************************************************************/
 
 use std::collections::HashMap;
+use super::super::load_models::SkeletonLoadModel;
 
 /// <summary>Stores mix (crossfade) durations to be applied when AnimationState animations are changed.</summary>
 pub struct AnimationStateData {
-	pub skeleton_data: SkeletonData,
-	pub animation_to_mix_time: HashMap<AnimationPair, f64>,
+	pub skeleton_data: SkeletonLoadModel,
+	// pub animation_to_mix_time: HashMap<AnimationPair, f64>,
 	pub default_mix: f64
 }
 
@@ -71,19 +72,6 @@ impl AnimationStateData
 	// 	return defaultMix;
 	// }
 
-	// pub struct AnimationPair {
-	// 	pub readonly Animation a1;
-	// 	pub readonly Animation a2;
-
-	// 	pub AnimationPair (Animation a1, Animation a2) {
-	// 		this.a1 = a1;
-	// 		this.a2 = a2;
-	// 	}
-
-	// 	pub override string ToString () {
-	// 		return a1.name + "->" + a2.name;
-	// 	}
-	// }
 
 	// // Avoids boxing in the dictionary.
 	// pub struct AnimationPairComparer : IEqualityComparer<AnimationPair> {
