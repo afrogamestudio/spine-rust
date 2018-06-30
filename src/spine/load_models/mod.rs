@@ -17,7 +17,6 @@ pub mod translation_delta_load_model;
 
 use self::event_load_model::EventLoadModel;
 use std::collections::HashMap;
-use serde_json::Value;
 
 pub fn default_scale() -> f64
 {

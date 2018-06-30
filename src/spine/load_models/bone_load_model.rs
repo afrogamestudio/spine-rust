@@ -1,4 +1,3 @@
-use serde_json::Value;
 use super::default_scale;
 
 #[derive(Serialize, Deserialize, Clone)]
