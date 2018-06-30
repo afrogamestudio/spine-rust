@@ -28,23 +28,23 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-using System;
+// pub struct Attachment {
+//     pub string Name { get; private set; }
+// }
 
-namespace Spine {
-	abstract pub struct Attachment {
-		pub string Name { get; private set; }
+pub struct Attachment
+{
+	pub name: String,
+	pub att_type: AttachmentType
+}
 
-		protected Attachment (string name) {
-			if (name == null) throw new ArgumentNullException("name", "name cannot be null");
-			Name = name;
-		}
-
-		override pub string ToString () {
-			return Name;
-		}
-	}
-
-	pub interface IHasRendererObject {
-		object RendererObject { get; }
-	}
+pub enum AttachmentType
+{
+	BoundingBox,
+	Clipping,
+	Mesh,
+	PathAtt,
+	Point,
+	Region,
+	Vertex
 }
