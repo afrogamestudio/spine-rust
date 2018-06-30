@@ -1,14 +1,13 @@
 use super::TextureFilter;
 use super::TextureWrap;
 use super::Format;
+use super::AtlasRegion;
 
 pub struct AtlasPage {
     pub name: String,
+    pub size: (i32, i32),
     pub format: Format,
-    pub min_filter: TextureFilter,
-    pub mag_filter: TextureFilter,
-    pub u_wrap: TextureWrap,
-    pub v_wrap: TextureWrap,
-    pub width: i32,
-    pub height: i32
+    pub filter: TextureFilter,
+    pub repeat: TextureWrap,
+    pub regions: Vec<AtlasRegion>
 }

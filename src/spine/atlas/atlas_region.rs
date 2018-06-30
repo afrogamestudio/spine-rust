@@ -1,16 +1,12 @@
-use super::AtlasPage;
-
+#[derive(Clone)]
 pub struct AtlasRegion {
-	pub page: AtlasPage,
 	pub name: String,
-	pub width: i32,
-	pub height: i32,
-	pub offset_x: i32,
-	pub offset_y: i32,
-	pub original_width: i32,
-	pub original_height: i32,
-	pub index: i32,
-	pub rotate: bool,
-	pub splits: Vec<i32>,
-	pub pads: Vec<i32>
+    pub rotate: bool,
+    pub xy: (i32, i32),
+    pub size: (i32, i32),
+    pub split: (i32, i32, i32, i32),
+    pub pad: (i32, i32, i32, i32),
+    pub orig: (i32, i32),
+    pub offset: (i32, i32),
+    pub index: Option<i32>
 }
