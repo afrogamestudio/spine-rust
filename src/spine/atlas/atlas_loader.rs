@@ -78,10 +78,20 @@ impl AtlasLoader
                         AtlasRegion { size: (x, y), ..last.clone()}
                     },
                     "split" => {
-                        AtlasRegion { split: (0, 0, 0, 0), ..last.clone() }
+                        let coords: Vec<_> = value.split(",").collect();
+                        let w = coords[0].trim().parse::<i32>().unwrap();
+                        let x = coords[1].trim().parse::<i32>().unwrap();
+                        let y = coords[2].trim().parse::<i32>().unwrap();
+                        let z = coords[3].trim().parse::<i32>().unwrap();
+                        AtlasRegion { split: (w, x, y, z), ..last.clone()}
                     },
                     "pad" => {
-                        AtlasRegion { pad: (0, 0, 0, 0), ..last.clone() }
+                        let coords: Vec<_> = value.split(",").collect();
+                        let w = coords[0].trim().parse::<i32>().unwrap();
+                        let x = coords[1].trim().parse::<i32>().unwrap();
+                        let y = coords[2].trim().parse::<i32>().unwrap();
+                        let z = coords[3].trim().parse::<i32>().unwrap();
+                        AtlasRegion { pad: (w, x, y, z), ..last.clone()}
                     },
                     "orig" => {
                         let coords: Vec<_> = value.split(",").collect();
@@ -90,10 +100,13 @@ impl AtlasLoader
                         AtlasRegion { orig: (x, y), ..last.clone()}
                     },
                     "offset" => {
-                        AtlasRegion { offset: (0, 0), ..last.clone() }
+                        let coords: Vec<_> = value.split(",").collect();
+                        let x = coords[0].trim().parse::<i32>().unwrap();
+                        let y = coords[1].trim().parse::<i32>().unwrap();
+                        AtlasRegion { offset: (x, y), ..last.clone()}
                     },
                     "index" => {
-                        AtlasRegion { index: None, ..last.clone() }
+                        AtlasRegion { index: value.trim().parse::<i32>().map(|x| Some(x)).unwrap_or(None), ..last.clone() }
                     },
                     _ => {println!("No joy {}", key); last.clone()}
                 };
