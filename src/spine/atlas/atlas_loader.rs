@@ -21,10 +21,7 @@ impl AtlasLoader
     {
         let page_data = data.to_string();
         let page_data = page_data.trim();
-        //println!("_{}", page_data);
 
-        // let end_of_line1 = page_data.find("\n").unwrap();
-        // let (page_title, rest) = page_data.split_at(end_of_line1);
         let lines: Vec<_> = page_data.split("\n").collect();
         let page_title = lines[0];
         let size_text = lines[1];
@@ -34,7 +31,6 @@ impl AtlasLoader
         let regions_start= page_title.len() + size_text.len() + format_text.len() + filter_text.len() + repeat_text.len() + 5;
 
         let (_, regions_text) = page_data.split_at(regions_start);
-        // println!("_{}", regions_text);
 
         let regions = regions_text.lines().fold(Vec::default(), |accum, line| {
             if !line.starts_with(" ")
@@ -108,7 +104,10 @@ impl AtlasLoader
                     "index" => {
                         AtlasRegion { index: value.trim().parse::<i32>().map(|x| Some(x)).unwrap_or(None), ..last.clone() }
                     },
-                    _ => {println!("No joy {}", key); last.clone()}
+                    _ => {
+                        println!("No joy {}", key);
+                        last.clone()
+                    }
                 };
                 rest.into_iter().map(|i| i.clone()).chain(vec![updated_region]).collect()
             }
