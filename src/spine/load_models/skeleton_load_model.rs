@@ -9,6 +9,7 @@ use super::default_events;
 use super::IkConstraintLoadModel;
 use super::TransformConstraintLoadModel;
 use super::PathConstraintLoadModel;
+use std::fs;
 
 #[derive(Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -163,4 +164,13 @@ impl SkeletonLoadModel
 	// 		if (pathConstraints.Items[i].name.Equals(pathConstraintName)) return i;
 	// 	return -1;
 	// }
+}
+
+impl SkeletonLoadModel
+{
+    pub fn from_file(path: &String) -> Self
+    {
+        let manifest_data = fs::read_to_string(path).expect("Unable to open file");
+        ::serde_json::from_str(&manifest_data).unwrap()
+    }
 }
