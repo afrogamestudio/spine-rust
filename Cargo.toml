@@ -2,6 +2,8 @@
 name = "spine_rust"
 version = "0.1.0"
 authors = ["Pontjho Mokhonoana <pontjho@entelect.co.za>"]
+description = "A spine loader and runtime"
+license = "MIT OR Apache-2.0"
 
 [dependencies]
 serde = "1.0.38"
