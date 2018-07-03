@@ -28,34 +28,31 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-namespace Spine {
-	/// <summary>
-	/// An attachment which is a single point and a rotation. This can be used to spawn projectiles, particles, etc. A bone can be
-	/// used in similar ways, but a PointAttachment is slightly less expensive to compute and can be hidden, shown, and placed in a
-	/// skin.
-	/// <p>
-	/// See <a href="http://esotericsoftware.com/spine-point-attachments">Point Attachments</a> in the Spine User Guide.
-	/// </summary>
-	pub struct PointAttachment : Attachment {
-		 f64 x, y, rotation;
-		pub f64 X { get { return x; } set { x = value; } }
-		pub f64 Y { get { return y; } set { y = value; } }
-		pub f64 Rotation { get { return rotation; } set { rotation = value; } }
-
-		pub PointAttachment (string name)
-			: base(name) {
-		}
-
-		pub void ComputeWorldPosition (Bone bone, out f64 ox, out f64 oy) {
-			bone.LocalToWorld(this.x, this.y, out ox, out oy);
-		}
-
-		pub f64 ComputeWorldRotation (Bone bone) {
-			f64 cos = MathUtils.CosDeg(rotation), sin = MathUtils.SinDeg(rotation);
-			f64 ix = cos * bone.a + sin * bone.b;
-			f64 iy = cos * bone.c + sin * bone.d;
-			return MathUtils.Atan2(iy, ix) * MathUtils.RadDeg;
-		}
-	}
+/// <summary>
+/// An attachment which is a single point and a rotation. This can be used to spawn projectiles, particles, etc. A bone can be
+/// used in similar ways, but a PointAttachment is slightly less expensive to compute and can be hidden, shown, and placed in a
+/// skin.
+/// <p>
+/// See <a href="http://esotericsoftware.com/spine-point-attachments">Point Attachments</a> in the Spine User Guide.
+/// </summary>
+pub struct PointAttachment
+{
+	pub x: f64,
+	pub y: f64,
+	pub rotation: f64
 }
 
+impl PointAttachment
+{
+	pub fn ComputeWorldPosition (Bone bone, out f64 ox, out f64 oy) {
+		bone.LocalToWorld(this.x, this.y, out ox, out oy);
+	}
+
+	pub ComputeWorldRotation (Bone bone) -> f64
+	{
+		f64 cos = MathUtils.CosDeg(rotation), sin = MathUtils.SinDeg(rotation);
+		f64 ix = cos * bone.a + sin * bone.b;
+		f64 iy = cos * bone.c + sin * bone.d;
+		MathUtils.Atan2(iy, ix) * MathUtils.RadDeg
+	}
+}
