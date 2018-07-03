@@ -1,5 +1,5 @@
 [package]
-name = "spine-rust"
+name = "spine_rust"
 version = "0.1.0"
 authors = ["Pontjho Mokhonoana <pontjho@entelect.co.za>"]
 
