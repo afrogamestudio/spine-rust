@@ -7,11 +7,11 @@ pub struct BoneLoadModel
 {
     pub name: String,
     pub parent: Option<String>,
-    pub length: Option<f64>,
-    pub rotation: Option<f64>,
-    pub x: Option<f64>,
-    pub y: Option<f64>,
-    pub transform: Option<TransformMode>,
+    pub length: f64,
+    pub rotation: f64,
+    pub x: f64,
+    pub y: f64,
+    pub transform: TransformMode,
     #[serde(default = "default_scale")]
     pub scale_x: f64,
     #[serde(default = "default_scale")]

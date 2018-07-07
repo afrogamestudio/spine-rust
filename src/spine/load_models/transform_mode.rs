@@ -1,5 +1,5 @@
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub enum TransformMode
 {
 	//0000 0 Flip Scale Rotation

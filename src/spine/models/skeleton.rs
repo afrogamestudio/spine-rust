@@ -1,4 +1,9 @@
-
+use super::super::load_models::SkeletonLoadModel;
+use super::BoundingBox;
+use super::Bone;
+use super::Slot;
+use std::fs;
+use std::collections::HashMap;
 
 #[derive(Debug, Clone)]
 pub struct Skeleton
@@ -28,14 +33,14 @@ impl Skeleton
             .into_iter()
             .map(|bone| Bone {
                 name: bone.name,
-                parent: bone.parent,
+                parent: None,
                 length: bone.length,
                 rotation: bone.rotation,
                 x: bone.x,
                 y: bone.y,
                 transform: bone.transform,
-                scale_x: bone.scaleX,
-                scale_y: bone.scaleY
+                scale_x: bone.scale_x,
+                scale_y: bone.scale_y
             })
             .map(|bone| (bone.name.clone(), bone))
             .collect();
@@ -52,10 +57,10 @@ impl Skeleton
             .collect();
 
         let mut bounding_boxes : Vec<BoundingBox> = Vec::default();
-        for (skin_name, slot_data) in skins {
+        for (_skin_name, slot_data) in skins {
             for (slot_name, attachment_data) in slot_data
             {
-                for (attachment_name, data) in attachment_data
+                for (_attachment_name, data) in attachment_data
                 {
                     if data.attachment_type.iter().filter(|&attachment_type|attachment_type == "boundingbox").count() == 1
                     {
@@ -84,28 +89,48 @@ impl Skeleton
         }
     }
 
-    pub fn get_bounding_boxes_at(&self, timestamp: f64) -> Vec<Polygon>
+    pub fn get_bounding_boxes_at(&self, _timestamp: f64) -> Vec<WorldBoundingBox>
     {
         let pts = self.bounding_boxes
             .iter()
             .map(|bx| {
                 let ref bone = self.bones[&bx.parent_bone];
-                Polygon { position: Vector2d {
-                    x: bone.x.unwrap_or(0.0),
-                    y: bone.y.unwrap_or(0.0)
-                }, points: (0..bx.vertices.len()/2)
-                    .map(|v| Vector2d { x: bx.vertices[v*2] * bone.scale_x, y: bx.vertices[(v*2)+1] * bone.scale_y } )
-                    .collect()
-            }})
+                let world_vertices = bx
+                    .vertices
+                    .iter()
+                    .enumerate()
+                    .map(|(v, i)| v as f64 * (match (*i as i32) % 2 { 0 => bone.scale_x, _ => bone.scale_y }))
+                    .collect();
+                WorldBoundingBox {
+                    world_vertices
+                }
+                // Polygon { position: Vector2d {
+                //     x: bone.x.unwrap_or(0.0),
+                //     y: bone.y.unwrap_or(0.0)
+                // }, points: (0..bx.vertices.len()/2)
+                //     .map(|v| Vector2d { x: bx.vertices[v*2] * bone.scale_x, y: bx.vertices[(v*2)+1] * bone.scale_y } )
+                //     .collect()
+            })
             .collect();
-        // println!("{:?}", vec!(0..self.bounding_boxes[1].vertices.len()/2).iter().collect::<Vec<_>>());
-        // println!("{:?}", self.bounding_boxes[1]);
-        // println!("{:?}", pts);
         pts
     }
+}
 
-    pub fn get_box_ids_by_name(&self, names: Vec<String>) -> Vec<Polygon>
+pub struct WorldBoundingBox
+{
+    pub world_vertices: Vec<f64>
+}
+
+pub fn build_hierarchy_for(bone: &Bone, bones: &HashMap<String, Bone>) -> Vec<Bone>
+{
+    match bone.parent.clone()
     {
-        Vec::default()
+        Some(parent) => {
+            let ref parent_bone = bones[&parent];
+            let parents = build_hierarchy_for(parent_bone, bones);
+            //combine_vectors(vec![parent_bone.clone()], parents)
+            vec![parent_bone.clone()].into_iter().chain(parents).collect()
+        },
+        None => Vec::default()
     }
 }

@@ -131,7 +131,7 @@ mod tests {
     use super::AtlasLoader;
 
     #[test]
-    fn it_works() {
+    fn atlas_loading() {
         let atlas_data = fs::read_to_string("test/fake-atlas.atlas").expect("Unable to open manifest");
         let atlas_pages = AtlasLoader::load(&atlas_data);
 

@@ -1,10 +1,10 @@
 
 
 #[derive(Debug, Clone)]
-struct Slot
+pub struct Slot
 {
-    name: String,
-    bone: String,
-    attachment: Option<String>,
-    color: Option<String>
+    pub name: String,
+    pub bone: String,
+    pub attachment: Option<String>,
+    pub color: Option<String>
 }

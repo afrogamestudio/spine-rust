@@ -1,7 +1,7 @@
 [package]
-name = "spine_rust"
+name = "spine-rust"
 version = "0.1.1"
-authors = ["Pontjho Mokhonoana <pontjho@entelect.co.za>"]
+authors = ["Pontjho Mokhonoana <pontjho@gmail.com>"]
 description = "A spine loader and runtime"
 license = "MIT OR Apache-2.0"
 
