@@ -9,3 +9,7 @@ pub enum TransformMode
 	NoScale = 2, // 0010
 	NoScaleOrReflection = 6, // 0110
 }
+
+impl Default for TransformMode {
+    fn default() -> TransformMode { TransformMode::Normal }
+}

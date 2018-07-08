@@ -8,5 +8,7 @@ pub struct SlotLoadModel
     pub bone: String,
     pub attachment: Option<String>,
     pub color: Option<String>,
+    
+	#[serde(default)]
 	pub blend_mode: BlendMode
 }
