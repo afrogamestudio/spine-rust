@@ -5,7 +5,6 @@ use super::SlotLoadModel;
 use super::EventLoadModel;
 use super::AttachmentLoadModel;
 use super::BoneLoadModel;
-use super::default_events;
 use super::IkConstraintLoadModel;
 use super::TransformConstraintLoadModel;
 use super::PathConstraintLoadModel;
@@ -44,88 +43,40 @@ pub struct SkeletonLoadModel
 
 impl SkeletonLoadModel
 {
-    // pub FindBone (string boneName) -> BoneData
+    pub fn find_bone (&self, bone_name: &String) -> Option<BoneLoadModel>
+    {
+		self.bones.iter().find(|b| b.name == *bone_name).map(|b| b.clone())
+    }
+
+    pub fn bind_bone_index (&self, bone_name: &String) -> Option<usize>
+    {
+		self.bones.iter().position(|b| b.name == *bone_name)
+    }
+
+    pub fn find_slot(&self, slot_name: &String) -> Option<SlotLoadModel>
+    {
+		self.slots.iter().find(|b| b.name == *slot_name).map(|b| b.clone())
+    }
+
+    pub fn bind_slot_index (&self, slot_name: &String) -> Option<usize>
+    {
+		self.slots.iter().position(|b| b.name == *slot_name)
+    }
+
+    // pub fn find_skin(&self, skin_name: &String) -> Option<SkinLoadModel>
     // {
-    //     if (boneName == null) throw new ArgumentNullException("boneName", "boneName cannot be null.");
-    //     var bones = this.bones;
-    //     var bonesItems = bones.Items;
-    //     for (int i = 0, n = bones.Count; i < n; i++) {
-    //         BoneData bone = bonesItems[i];
-    //         if (bone.name == boneName) return bone;
-    //     }
-    //     return null;
+	// 	self.skins.iter().find(|b| b.name == *skin_name).map(|b| b.clone())
     // }
 
-    // /// <returns>-1 if the bone was not found.</returns>
-    // pub FindBoneIndex (string boneName) -> i32
-    // {
-    //     if (boneName == null) throw new ArgumentNullException("boneName", "boneName cannot be null.");
-    //     var bones = this.bones;
-    //     var bonesItems = bones.Items;
-    //     for (int i = 0, n = bones.Count; i < n; i++)
-    //         if (bonesItems[i].name == boneName) return i;
-    //     return -1;
-    // }
+    pub fn find_event(&self, event_name: &String) -> Option<EventLoadModel>
+    {
+		self.events.get(event_name).map(|e| e.clone())
+    }
 
-    // // --- Slots.
-
-    // /// <returns>May be null.</returns>
-    // pub FindSlot (string slotName) -> SlotData
-    // {
-    //     if (slotName == null) throw new ArgumentNullException("slotName", "slotName cannot be null.");
-    //     ExposedList<SlotData> slots = this.slots;
-    //     for (int i = 0, n = slots.Count; i < n; i++) {
-    //         SlotData slot = slots.Items[i];
-    //         if (slot.name == slotName) return slot;
-    //     }
-    //     return null;
-    // }
-
-    // /// <returns>-1 if the slot was not found.</returns>
-    // pub FindSlotIndex (string slotName) -> i32
-    // {
-    //     if (slotName == null) throw new ArgumentNullException("slotName", "slotName cannot be null.");
-    //     ExposedList<SlotData> slots = this.slots;
-    //     for (int i = 0, n = slots.Count; i < n; i++)
-    //         if (slots.Items[i].name == slotName) return i;
-    //     return -1;
-    // }
-
-    // // --- Skins.
-
-    // /// <returns>May be null.</returns>
-    // pub FindSkin (string skinName) -> Skin
-    // {
-    //     if (skinName == null) throw new ArgumentNullException("skinName", "skinName cannot be null.");
-    //     foreach (Skin skin in skins)
-    //         if (skin.name == skinName) return skin;
-    //     return null;
-    // }
-
-    // // --- Events.
-
-    // /// <returns>May be null.</returns>
-    // pub FindEvent (string eventDataName) -> EventData
-    // {
-    //     if (eventDataName == null) throw new ArgumentNullException("eventDataName", "eventDataName cannot be null.");
-    //     foreach (EventData eventData in events)
-    //         if (eventData.name == eventDataName) return eventData;
-    //     return null;
-    // }
-
-    // // --- Animations.
-
-    // /// <returns>May be null.</returns>
-    // pub FindAnimation (string animationName) -> Animation
-    // {
-    //     if (animationName == null) throw new ArgumentNullException("animationName", "animationName cannot be null.");
-    //     ExposedList<Animation> animations = this.animations;
-    //     for (int i = 0, n = animations.Count; i < n; i++) {
-    //         Animation animation = animations.Items[i];
-    //         if (animation.name == animationName) return animation;
-    //     }
-    //     return null;
-    // }
+    pub fn find_animation(&self, animation_name: &String) -> Option<AnimationLoadModel>
+    {
+		self.animations.get(animation_name).map(|e| e.clone())
+    }
 
     // // --- IK constraints.
 
