@@ -43,14 +43,7 @@ pub use self::transform_constraint_load_model::TransformConstraintLoadModel;
 pub use self::transform_mode::TransformMode;
 pub use self::translation_delta_load_model::TranslationDeltaLoadModel;
 
-use std::collections::HashMap;
-
 pub fn default_scale() -> f64
 {
     1.0
-}
-
-fn default_events() -> HashMap<String, EventLoadModel>
-{
-    HashMap::default()
 }
